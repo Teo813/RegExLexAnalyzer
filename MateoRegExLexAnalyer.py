@@ -47,6 +47,10 @@ token_types = [
 def lexer(text):
     tokens = []
     while text:
+        # Ignore whitespace
+        if text[0].isspace():
+            text = text[1:]
+            continue
         match = None
         for token_type, pattern in token_types:
             match = re.match(pattern, text)
